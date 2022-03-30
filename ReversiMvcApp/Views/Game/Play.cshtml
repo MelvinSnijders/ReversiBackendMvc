@@ -1,0 +1,28 @@
+﻿@using Newtonsoft.Json
+@model Game
+
+@{
+    string translated = @Model.PlayerTurn switch
+    {
+        Color.None => "Geen",
+        Color.Black => "Zwart",
+        Color.White => "Wit"
+    };
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+       Game.init(() => console.log("Game initiated"));
+       Game.Reversi.setGame(@Html.Raw(JsonConvert.SerializeObject(@Model)));
+    });
+</script>
+
+<div class="reversi-turn">
+    <p>Nu aan de beurt: <strong id="reversi-turn">@translated</strong></p>
+</div>
+
+<div>
+   <div class="reversi-board">
+</div>
+
+<div id="reversi-cat-fact"></div>

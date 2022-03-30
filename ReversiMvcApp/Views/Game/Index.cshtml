@@ -1,0 +1,15 @@
+﻿@model List<Game>
+
+<p>Beschikbare spellen:</p>
+
+@foreach (Game item in Model)
+{
+            <form method="post" action="@Url.Action("Join", "Game")">
+                <p>@Html.DisplayFor(modelItem => item.Description)</p>       
+                <input type="hidden" name="gameId" value="@Html.DisplayFor(modelItem => item.ID)">
+                <button type="submit">Join game</button>
+            </form>
+
+}
+
+<a asp-action="Create">Start een nieuw spel</a>
