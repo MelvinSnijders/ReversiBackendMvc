@@ -45,6 +45,9 @@ namespace ReversiMvcApp
             services.AddSignalR();
             services.AddScoped<ApiAccessLayer>();
 
+            services.BuildServiceProvider().GetService<ApplicationDbContext>().Database.Migrate();
+            services.BuildServiceProvider().GetService<ReversiDbContext>().Database.Migrate();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
